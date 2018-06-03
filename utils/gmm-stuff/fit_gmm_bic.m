@@ -42,10 +42,27 @@ fprintf('\n ');
 bic_scores_diff  = [0 diff(bic_scores)];
 bic_scores_diff2 = [0 diff(bic_scores_diff)];
 % Best BIC will be the inflection point with highest value
-[~, k] = max(bic_scores_diff2);
+[max_pk, max_pk_id] = max(bic_scores_diff2);
+[pks, pks_id] = findpeaks(bic_scores_diff2)
 
+k = max_pk_id;
+if max_pk_id == max_gaussians
+    fprintf('goes with K max');
+elseif max_pk_id == min(pks_id)
+    fprintf('pk is the first one.. check other peaks')
+    pk_ratios = pks./max(pks)
+    poss_k = find(pk_ratios > 0.75)    
+    if length(poss_k)==1
+        poss_k = find(pk_ratios > 0.45)
+        if length(poss_k)>1
+            k = pks_id(poss_k(2));
+        end
+    else
+        k = pks_id(poss_k(2));
+    end
+end
+k
 % Select the point before this
-% k = k -1;
 best_BIC = bic_scores(k);
 
 % Plot Results
