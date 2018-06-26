@@ -38,30 +38,27 @@ for j = 1:max_gaussians
 end
 fprintf('\n ');
 
-% Compute Diff of BIC Scores
+% % Compute Diff of BIC Scores
 bic_scores_diff  = [0 diff(bic_scores)];
 bic_scores_diff2 = [0 diff(bic_scores_diff)];
-% Best BIC will be the inflection point with highest value
-[max_pk, max_pk_id] = max(bic_scores_diff2);
-[pks, pks_id] = findpeaks(bic_scores_diff2);
-k = max_pk_id;
-if max_pk_id == max_gaussians
-    fprintf('goes with K max');
-elseif max_pk_id == min(pks_id)
-    fprintf('pk is the first one.. check other peaks')
-    pk_ratios = pks./max(pks);
-    poss_k = find(pk_ratios > 0.75)  ;  
-    if length(poss_k)==1
-        poss_k = find(pk_ratios > 0.45);
-        if length(poss_k)>1
-            k = pks_id(poss_k(2));
-        end
-    else
-        k = pks_id(poss_k(2));
-    end
+
+% Find optimal value on RSS curve
+[~, opt_Ks_BIC_line] = ml_curve_opt(bic_scores,'line');
+opt_BIC_vals_line    = bic_scores(opt_Ks_BIC_line);
+
+% Other options with the 'derivatives' approach
+[~, opt_Ks_BIC_der] = ml_curve_opt(bic_scores,'derivatives');
+opt_BIC_vals_der    = bic_scores(opt_Ks_BIC_der);
+
+if opt_Ks_BIC_line < opt_Ks_BIC_der(1)
+    chosen_k = opt_Ks_BIC_der(1);
+else
+    chosen_k = opt_Ks_BIC_line;
 end
 
+
 % Select the point before this
+k = chosen_k;
 best_BIC = bic_scores(k);
 
 % Plot Results
@@ -69,7 +66,9 @@ if do_plot
     figure('Color', [1 1 1])
     subplot(2,1,1)
     plot(1:length(bic_scores), bic_scores, '-*', 'Color', [rand rand rand]); hold on;
-    scatter(k,best_BIC, 50,[1 0 0]);
+    scatter(k, best_BIC, 100, [0 0 0]); hold on;
+    scatter(opt_Ks_BIC_line, opt_BIC_vals_line, 75, [1 0 0]); hold on;
+    scatter(opt_Ks_BIC_der,opt_BIC_vals_der, 75, [0 1 0]); hold on;    
     grid on;
     title('BIC Score for GMM fit ','Interpreter','LaTex');
     xlabel('Gaussian functions $K$','Interpreter','LaTex');

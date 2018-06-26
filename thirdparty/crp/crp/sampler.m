@@ -65,13 +65,14 @@ end
 % set alpha gamma prior parameters
 if(nargin < 3)
     a_0 = 0.1;
+%     a_0 = 1;
 end
 if(nargin <4)
     b_0 = 2;
 end
 
 % initialize
-alpha = 1;
+alpha = 10;
 N = size(training_data,2);
 y = training_data;
 % phi = cell(num_sweeps,1);

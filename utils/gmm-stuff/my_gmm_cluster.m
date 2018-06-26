@@ -1,4 +1,4 @@
-function [labels] =  my_gmm_cluster(X, Priors, Mu, Sigma, type, softThresholds)
+function [Pk_x_max, labels] =  my_gmm_cluster(X, Priors, Mu, Sigma, type, softThresholds)
 %MY_GMM_CLUSTER Computes the cluster labels for the data points given the GMM
 %
 %   input -----------------------------------------------------------------
@@ -36,6 +36,7 @@ function [labels] =  my_gmm_cluster(X, Priors, Mu, Sigma, type, softThresholds)
 % Initializing variables
 Pk_x = zeros(K,M);
 labels = zeros(1,M);
+Pk_x_max = zeros(1,M);
 
 % Find the a posteriori probability for each data point for each cluster
 for ii = 1:K
@@ -51,7 +52,7 @@ for ii = 1:M
     switch type
         case 'hard'
             % Find the cluster with highest probability
-            [~,labels(ii)] = max(Pk_x(:,ii));
+            [Pk_x_max(ii) ,labels(ii)] = max(Pk_x(:,ii));
     
         case 'soft'
             % Find the cluster with highest probabilty. Unless, the highest

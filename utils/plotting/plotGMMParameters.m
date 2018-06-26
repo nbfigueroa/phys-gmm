@@ -13,13 +13,17 @@ M = size(Y,1);
 if (M == 2) || (M == 3)
     % Plot M-Dimensional Points of Spectral Manifold
     idx_label   = est_labels;
-    pred_clust = length(unique(est_labels));
+%     pred_clust = length(unique(est_labels));
+    pred_clust = size(Mu,2);
     
     if M==2    
         for jj=1:pred_clust
-            clust_color = [rand rand rand];                                             
-            scatter(Y(1,idx_label==jj),Y(2,idx_label==jj), 50, clust_color, 'filled'); hold on;
+            clust_color = [rand rand rand];  
+            if nargin < 5
+                scatter(Y(1,idx_label==jj),Y(2,idx_label==jj), 50, clust_color, 'filled'); hold on;
+            end
             plotGMM(Mu(:,jj), Sigma(:,:,jj), clust_color, 1);
+            text(Mu(1,jj),Mu(2,jj),num2str(jj),'FontSize',20);
             alpha(.5)
         end 
         box on
