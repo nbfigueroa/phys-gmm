@@ -1,4 +1,4 @@
-function [ handle ] = plotGMMParameters( Y, est_labels, Mu, Sigma, varargin )
+function [ handle, h_gmm, h_ctr ] = plotGMMParameters( Y, est_labels, Mu, Sigma, varargin )
 %UNTITLED10 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,28 +8,28 @@ else
     handle = figure('Color', [1 1 1]);
 end
 M = size(Y,1);
-
+h_gmm = [];h_ctr = [];
 % Plot Gaussians on Projected Data
 if (M == 2) || (M == 3)
-    % Plot M-Dimensional Points of Spectral Manifold
-    idx_label   = est_labels;
-%     pred_clust = length(unique(est_labels));
+    idx_label   = est_labels;   
     pred_clust = size(Mu,2);
     
     if M==2    
         for jj=1:pred_clust
-            clust_color = [rand rand rand];  
+            clust_color = [rand rand rand]  ;
             if nargin < 5
                 scatter(Y(1,idx_label==jj),Y(2,idx_label==jj), 50, clust_color, 'filled'); hold on;
             end
-            plotGMM(Mu(:,jj), Sigma(:,:,jj), clust_color, 1);
-            text(Mu(1,jj),Mu(2,jj),num2str(jj),'FontSize',20);
+           [h_gmm_, h_ctr_ ] = plotGMM(Mu(:,jj), Sigma(:,:,jj), clust_color, 1);
+           h_gmm = [h_gmm h_gmm_];
+           h_ctr = [h_ctr h_ctr_];           
+%             text(Mu(1,jj),Mu(2,jj),num2str(jj),'FontSize',20);
             alpha(.5)
         end 
         box on
         grid on
-        xlabel('$\xi_1$','Interpreter','LaTex','FontSize',20);
-        ylabel('$\xi_2$','Interpreter','LaTex','FontSize',20);
+        xlabel('$x_1$','Interpreter','LaTex','FontSize',20);
+        ylabel('$x_2$','Interpreter','LaTex','FontSize',20);
         colormap(hot)
         grid on
     end
@@ -72,7 +72,6 @@ if (M == 2) || (M == 3)
         
     end
 end
-
 
 end
 
