@@ -36,20 +36,25 @@ demo_loadData.m
 ```
 ### Example Datasets
 The following datasets are provided in ```
-./datasets``` folder. Following we show fits from pc-gmm ***(top right)***, EM fit with Model Selection via BIC score ***(bottom left)*** and Bayesian Non-Parametric inference via CRP formulation ***(bottom right)**.
-- ***GMM fit on Snake Dataset***
+./datasets``` folder. Following we show fits from pc-gmm **(top right)**, EM fit with Model Selection via BIC score **(bottom left)** and Bayesian Non-Parametric inference via CRP formulation **(bottom right)**.
+- **GMM fit on Snake Dataset**
 <p align="center">
-  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-data.png" width="300">
-<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-pcgmm.png" width="300"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-emgmm.png" width="300"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="300">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-data.png" width="360">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-pcgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-emgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="360">
 </>
-
--  ***GMM fit on Concentric Circles Dataset***
+  
+-  **GMM fit on Concentric Circles Dataset**
 
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-data.png" width="300">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="300"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="300"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="300">
 </>
 
+### Estimation Statistics
+By setting ```est_options.do_plots= 1;``` the function will plot the corresponding estimation statistics for each algorithm. 
+- For the PC-GMM we show the values of the posterior distribution p(C|...) and the estimation clusters at each iteration:
+
+- For the EM-based Model Selection approach we show the BIC curve computed with increasing K=1,...,15. The 1st and 2nd order numerical derivative of this curve is also plotted and the 'optimal' K is selected 
 
 Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1,2]. To use this approach to learn stable DS, you should download the [lpv-opt](https://github.com/nbfigueroa/lpv-opt.git)  package.   
 
