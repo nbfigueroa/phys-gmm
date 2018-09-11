@@ -52,21 +52,21 @@ The following datasets are provided in ```
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-pcgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-emgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="360">
 </>  
 
--  **GMM fit on 2D Via-Point Dataset**
+-  **GMM fit on 2D Via-Point Dataset**  
 TODO...
 
--  **GMM fit on 3D Via-Point Dataset**
+-  **GMM fit on 3D Via-Point Dataset**  
 TODO...
 
 ### Estimation Statistics
 By setting ```est_options.do_plots= 1;``` the function will plot the corresponding estimation statistics for each algorithm. 
-- For the PC-GMM we show the values of the posterior distribution p(C|...) and the estimated clusters at each iteration:
+- For the PC-GMM we show the values of the posterior distribution p(C|...) and the estimated clusters at each iteration:  
 TODO...
 
-- For the EM-based Model Selection approach we show the BIC curve computed with increasing K=1,...,15. The 1st and 2nd order numerical derivative of this curve is also plotted and the 'optimal' K is selected as the inflection point.
+- For the EM-based Model Selection approach we show the BIC curve computed with increasing K=1,...,15. The 1st and 2nd order numerical derivative of this curve is also plotted and the 'optimal' K is selected as the inflection point:  
 TODO...
 
-- For the CRP-GMM we show the values of the posterior distribution p(Z|...) and the estimated clusters at each iteration:
+- For the CRP-GMM we show the values of the posterior distribution p(Z|...) and the estimated clusters at each iteration:  
 TODO...
 
 ### Usage
