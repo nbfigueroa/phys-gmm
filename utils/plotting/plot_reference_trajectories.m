@@ -1,4 +1,4 @@
-function [h_data, h_vel] = plot_reference_trajectories(Data, vel_sample)
+function [h_data, h_vel] = plot_reference_trajectories(Data, vel_sample, vel_size)
 
 % Plot the position trajectories
 h_data = plot(Data(1,:),Data(2,:),'r.','markersize',10); hold on;
@@ -12,6 +12,6 @@ for i = 1:size(vel_points, 2)
     U(i,1)   = dir_(1);
     V(i,1)   = dir_(2);
 end
-h_vel = quiver(vel_points(1,:)',vel_points(2,:)', U, V, 0.5, 'Color', 'k', 'LineWidth',2); hold on;
+h_vel = quiver(vel_points(1,:)',vel_points(2,:)', U, V, vel_size, 'Color', 'k', 'LineWidth',2); hold on;
 
 end

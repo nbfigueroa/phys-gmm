@@ -19,6 +19,16 @@ if ~isempty(est_options.sub_sample)
     Xi_dot_ref = Xi_dot_ref(:,1:sub_sample:end);
 end
 
+if isempty(est_options.samplerIter)
+    if est_type == 0
+        samplerIter = 20;
+    end
+    if est_type == 2
+        samplerIter = 200;
+    end
+else
+    samplerIter = est_options.samplerIter;
+end
 switch est_type
     case 0
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,8 +90,8 @@ switch est_type
         % Setting sampler/model options (i.e. hyper-parameters, alpha, Covariance matrix)
         Xi_ref_mean = mean(Xi_ref,2);
         options                 = [];
-        options.type            = 'full';  % Type of Covariance Matrix: 'full' = NIW or 'Diag' = NIG
-        options.T               = 20;     % Sampler Iterations
+        options.type            = 'full';        % Type of Covariance Matrix: 'full' = NIW or 'Diag' = NIG
+        options.T               = samplerIter;   % Sampler Iterations
         options.alpha           = max(0.1,0.1*(randi(11)-2)); % Concentration parameter
         
         % Standard Base Distribution Hyper-parameter setting
@@ -148,8 +158,7 @@ switch est_type
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         % CRP-GMM (Frank-Wood's implementation) -- faster
-        iterations = 200;
-        [class_id, mean_record, covariance_record, K_record, lP_record, alpha_record] = sampler(Xi_ref, iterations);
+        [class_id, mean_record, covariance_record, K_record, lP_record, alpha_record] = sampler(Xi_ref, samplerIter);
         [val , Maxiter]  = max(lP_record);
         est_labels       = class_id(:,Maxiter);
         
@@ -157,17 +166,17 @@ switch est_type
         if do_plots
             figure('Color',[1 1 1])
             subplot(2,1,1)
-            semilogx(1:iterations, lP_record'); hold on;
+            semilogx(1:samplerIter, lP_record'); hold on;
             semilogx(Maxiter,lP_record(Maxiter),'ko','MarkerSize',10);
             grid on
             xlabel('Gibbs Iteration','Interpreter','LaTex','Fontsize',20); ylabel('LogPr','Interpreter','LaTex','Fontsize',20)
-            xlim([1 iterations])
+            xlim([1 samplerIter])
             legend({'$p(Z|Y, \alpha, \lambda)$'},'Interpreter','LaTex','Fontsize',14)
             title(sprintf('CRP-GMM Sampling results, optimal K=%d at iter=%d', length(unique(est_labels)), Maxiter), 'Interpreter','LaTex','Fontsize',20)            
             subplot(2,1,2)
             stairs(K_record, 'LineWidth',2);
             set(gca, 'XScale', 'log')
-            xlim([1 iterations])
+            xlim([1 samplerIter])
             xlabel('Gibbs Iteration','Interpreter','LaTex','Fontsize',20); ylabel('$\Psi$ = Estimated K','Interpreter','LaTex','Fontsize',20);
         end
         % Extract Learnt cluster parameters
