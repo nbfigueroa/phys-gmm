@@ -1,8 +1,12 @@
 # phys-gmm
 This package contains the inference implementation (Gibbs Sampler) for the "Physically Consistent Bayesian Non-Parametric Mixture Model" (PC-GMM) proposed in [1]. This approach is used to fit GMM to trajectory data while ensuring that the points clustered in each Gaussian represent/follow some linear dynamics.; i.e. not only should they be close in "Euclidean"-position space but they should also follow the same direction. 
 
+
+
+
 <p align="center">
-<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-pcgmm.png" width="270"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="270"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="270">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-data.png" width="350">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-pcgmm.png" width="350"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-emgmm.png" width="350"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="350">
 </>
 
 
