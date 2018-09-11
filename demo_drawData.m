@@ -25,7 +25,7 @@ for l=1:length(data)
     x0_all = [x0_all data_(1:2,1)];
 end
 
-% Position/Velocity Trajectories
+%% Position/Velocity Trajectories
 close;
 Xi_ref     = Data(1:2,:);
 Xi_dot_ref = Data(3:end,:);
@@ -37,7 +37,6 @@ box on;
 title('Reference Trajectories','Interpreter','LaTex','FontSize',20);
 xlabel('$\xi_1$','Interpreter','LaTex','FontSize',20);
 ylabel('$\xi_2$','Interpreter','LaTex','FontSize',20);
-
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Step 2 (GMM FITTING): Fit GMM to Trajectory Data %%
