@@ -47,8 +47,8 @@ The following datasets are provided in ```
 -  **GMM fit on Concentric Circles Dataset**
 
 <p align="center">
-  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-data.png" width="300">
-<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="300"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="300"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="300">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-data.png" width="360">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="360">
 </>
 
 ### Estimation Statistics
