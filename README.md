@@ -1,7 +1,7 @@
 # phys-gmm
 This package contains the inference implementation (Gibbs Sampler) for the "Physically Consistent Bayesian Non-Parametric Mixture Model" (PC-GMM) proposed in [1]. This approach is used to fit GMM to trajectory data while ensuring that the points clustered in each Gaussian represent/follow some linear dynamics.; i.e. not only should they be close in "Euclidean"-position space but they should also follow the same direction. 
 
-This package offers the physically-consistent GMM fitting approach **(bottom right)**, as well as examples and code for fitting GMM with standard EM approach **(bottom left)** and the Bayesian non-parametric approach following the Chinese Restaurant Process construction **(bottom right)** through the ```[Mu, Priors, Sigma] = fit_gmm()``` function by filling its options as follows:
+This package offers the physically-consistent GMM fitting approach, as well as examples and code for fitting GMM with standard EM approach and the Bayesian non-parametric approach following the Chinese Restaurant Process construction through the ```[Mu, Priors, Sigma] = fit_gmm()``` function by filling its options as follows:
 ```
 %%%%%%%%%%%%%%%%%% GMM Estimation Algorithm %%%%%%%%%%%%%%%%%%%%%%
 % 0: Physically-Consistent Non-Parametric (Collapsed Gibbs Sampler)
@@ -34,7 +34,9 @@ or you can load pre-drawn datasets with the following script:
 ```
 demo_loadData.m
 ```
-
+### Example Datasets
+The following datasets are provided in ```
+./datasets``` folder. Following we show fits from pc-gmm ***(top right)***, EM fit with Model Selection via BIC score ***(bottom left)*** and Bayesian Non-Parametric inference via CRP formulation ***(bottom right)**.
 - ***GMM fit on Snake Dataset***
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-data.png" width="350">
@@ -50,7 +52,6 @@ demo_loadData.m
 
 
 Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1,2]. To use this approach to learn stable DS, you should download the [lpv-opt](https://github.com/nbfigueroa/lpv-opt.git)  package.   
-
 
 
 
