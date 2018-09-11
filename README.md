@@ -10,8 +10,8 @@ This package contains the inference implementation (Gibbs Sampler) for the "Phys
 ### GMM fit on Concentric Circles Dataset
 
 <p align="center">
-  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-data.png" width="350">
-<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-pcgmm.png" width="350"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-emgmm.png" width="350"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="350">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-data.png" width="350">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="350"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="350"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="350">
 </>
 
 
