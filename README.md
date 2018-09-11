@@ -1,6 +1,7 @@
 # phys-gmm
 This package contains the inference implementation (Collapsed Gibbs Sampler) for the "Physically Consistent Bayesian Non-Parametric Mixture Model" (PC-GMM) proposed in [1]. This approach is used to fit GMM to trajectory data while ensuring that the points clustered in each Gaussian represent/follow some linear dynamics.; i.e. not only should they be close in "Euclidean"-position space but they should also follow the same direction. 
 
+### Instructions
 This package offers the physically-consistent GMM fitting approach, as well as examples and code for fitting GMM with standard EM approach and the Bayesian non-parametric approach following the Chinese Restaurant Process construction through the ```[Mu, Priors, Sigma] = fit_gmm()``` function by filling its options as follows:
 ```
 %%%%%%%%%%%%%%%%%% GMM Estimation Algorithm %%%%%%%%%%%%%%%%%%%%%%
@@ -58,7 +59,7 @@ By setting ```est_options.do_plots= 1;``` the function will plot the correspondi
 
 - For the CRP-GMM we show the values of the posterior distribution p(Z|...) and the estimated clusters at each iteration:
 
-
+### Usage
 Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1,2]. To use this approach for DS learning, download the [lpv-opt](https://github.com/nbfigueroa/lpv-opt.git) package.   
 
 **References**    
