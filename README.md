@@ -38,18 +38,22 @@ demo_loadData.m
 ### Example Datasets
 The following datasets are provided in ```
 ./datasets``` folder. Following we show fits from pc-gmm **(top right)**, EM fit with Model Selection via BIC score **(bottom left)** and Bayesian Non-Parametric inference via CRP formulation **(bottom right)**.
-- **GMM fit on Snake Dataset**
+- **GMM fit on 2D Snake Dataset**
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-data.png" width="360">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-pcgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-emgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="360">
 </>
   
--  **GMM fit on Concentric Circles Dataset**
+-  **GMM fit on 2D Concentric Circles Dataset**
 
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-data.png" width="360">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="360">
 </>
+
+-  **GMM fit on 2D Via-Point Dataset**
+
+-  **GMM fit on 3D Via-Point Dataset**
 
 ### Estimation Statistics
 By setting ```est_options.do_plots= 1;``` the function will plot the corresponding estimation statistics for each algorithm. 
