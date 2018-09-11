@@ -59,7 +59,7 @@ By setting ```est_options.do_plots= 1;``` the function will plot the correspondi
 - For the CRP-GMM we show the values of the posterior distribution p(Z|...) and the estimated clusters at each iteration:
 
 
-Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1,2]. To use this approach to learn stable DS, you should download the [lpv-opt](https://github.com/nbfigueroa/lpv-opt.git)  package.   
+Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1,2]. To use this approach for DS learning, download the [lpv-opt](https://github.com/nbfigueroa/lpv-opt.git) package.   
 
 **References**    
 > [1] Figueroa, N. and Billard, A. (2018) A Physically-Consistent Bayesian Non-Parametric Mixture Model for Dynamical System Learning. In Proceedings of the 2nd Conference on Robot Learning (CoRL). Accepted.  
