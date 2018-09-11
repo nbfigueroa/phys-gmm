@@ -25,7 +25,7 @@ est_options.locality_scaling = 1;   % Scaling for the similarity to improve loca
 est_options.sub_sample       = 2;   % Size of sub-sampling of trajectories
 
 % Fit GMM to Trajectory Data
-[Priors0, Mu0, Sigma0] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
+[Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
 ```
 To test the function, you can either draw 2D data by running the demo script:
 ```
