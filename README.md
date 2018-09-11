@@ -15,7 +15,7 @@ est_options.maxK             = 15;  % Maximum Gaussians for Type 1
 est_options.fixed_K          = [];  % Fix K and estimate with EM for Type 1
 
 % If algo 0 or 2 selected:
-est_options.samplerIter      = 200;  % Maximum Sampler Iterations
+est_options.samplerIter      = 20;  % Maximum Sampler Iterations
                                     % For type 0: 20 iter is sufficient
                                     % For type 2: >100 iter are needed
                                     
