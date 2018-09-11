@@ -31,7 +31,7 @@ To test the function, you can either draw 2D data by running the demo script:
 ```
 demo_drawData.m
 ```
-or you can load pre-drawn datasets with the following script:
+or you can load pre-drawn 2D or real 3D datasets with the following script:
 ```
 demo_loadData.m
 ```
