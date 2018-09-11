@@ -22,7 +22,7 @@ est_options.samplerIter      = 20;  % Maximum Sampler Iterations
                                     
 est_options.do_plots         = 1;   % Plot Estimation Statistics
 est_options.locality_scaling = 1;   % Scaling for the similarity to improve locality, Default=1
-est_options.sub_sample       = 1;   % Size of sub-sampling of trajectories
+est_options.sub_sample       = 2;   % Size of sub-sampling of trajectories
 
 % Fit GMM to Trajectory Data
 [Priors0, Mu0, Sigma0] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
