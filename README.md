@@ -32,7 +32,7 @@ demo_drawData.m
 ```
 or you can load pre-drawn datasets with the following script:
 ```
-demo_drawData.m
+demo_loadData.m
 ```
 
 - ***GMM fit on Snake Dataset***
