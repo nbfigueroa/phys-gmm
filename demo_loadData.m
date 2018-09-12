@@ -2,31 +2,27 @@
 % Demo Code for GMM Learning for paper:                                   %
 %  'A Physically-Consistent Bayesian Non-Parametric Mixture Model for     %
 %   Dynamical System Learning.'                                           %
-% With this script you can draw 2D toy trajectories and test different    %
+% With this script you can load 2D toy trajectories or even real-world 
+% trajectories acquired via kinesthetic taching and test the different    %
 % GMM fitting approaches.                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Step 1 (DATA LOADING): Draw 2D Trajectories with GUI %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Step 1 (DATA LOADING): Load Datasets %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 close all; clear all; clc
-fig1 = figure('Color',[1 1 1]);
-limits = [-4 4 -4 4];
-axis(limits)
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.25, 0.55, 0.2646 0.4358]);
-grid on
+%%%%%%%%%%%% Select a Dataset %%%%%%%%%%%
+% 1: Snake Dataset (2D)
+% 2: Concentric Circle Dataset (2D)
+% 3: Via-Point Dataset (2D)
+% 4: Self-Intersecting Dataset (2D)
+% 5: Scenario 1 - Viapoint (3D)
+% 6: Scenario 2 - Sink (3D)
+% 7: 
+% 8: 
+dataset = 1; 
+Data = load_dataset(dataset);
 
-% Draw Reference Trajectories
-data = draw_mouse_data_on_DS(fig1, limits);
-Data = []; x0_all = [];
-for l=1:length(data)    
-    % Check where demos end and shift
-    data_ = data{l};
-    Data = [Data data_];
-    x0_all = [x0_all data_(1:2,1)];
-end
-
-%% Visualize Position/Velocity Trajectories
-close;
+%% Position/Velocity Trajectories
 Xi_ref     = Data(1:2,:);
 Xi_dot_ref = Data(3:end,:);
 figure('Color',[1 1 1])
@@ -47,46 +43,36 @@ ylabel('$\xi_2$','Interpreter','LaTex','FontSize',20);
 % 1: GMM-EM Model Selection via BIC
 % 2: CRP-GMM (Collapsed Gibbs Sampler)
 est_options = [];
-est_options.type             = 2;   % GMM Estimation Algorithm Type   
+est_options.type             = 0;   % GMM Estimation Alorithm Type   
 
 % If algo 1 selected:
 est_options.maxK             = 15;  % Maximum Gaussians for Type 1
 est_options.fixed_K          = [];  % Fix K and estimate with EM for Type 1
 
 % If algo 0 or 2 selected:
-est_options.samplerIter      = 200;  % Maximum Sampler Iterations
+est_options.samplerIter      = 20;  % Maximum Sampler Iterations
                                     % For type 0: 20 iter is sufficient
                                     % For type 2: >100 iter are needed
                                     
 est_options.do_plots         = 1;   % Plot Estimation Statistics
 est_options.locality_scaling = 1;   % Scaling for the similarity to improve locality, Default=1
-est_options.sub_sample       = 1;   % Size of sub-sampling of trajectories
+est_options.sub_sample       = 2;   % Size of sub-sampling of trajectories
 
 % Fit GMM to Trajectory Data
-[Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
+[Priors0, Mu0, Sigma0] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Step 3 (FIT Visualization): Visualize Gaussian Components and labels %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Extract Cluster Labels
-est_K      = length(Priors); 
+est_K      = length(Priors0); 
+Priors = Priors0; Mu = Mu0; Sigma = Sigma0;
 [~, est_labels] =  my_gmm_cluster(Xi_ref, Priors, Mu, Sigma, 'hard', []);
 
-% Visualize Cluster Parameters Trajectory Data
+% Visualize Cluster Parameters on Manifold Data
 plotGMMParameters( Xi_ref, est_labels, Mu, Sigma);
 limits_ = limits + [-0.015 0.015 -0.015 0.015];
 axis(limits_)
-switch est_options.type   
-    case 0
-        title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
-    case 1        
-        title('Best fit GMM with EM-based BIC Model Selection','Interpreter','LaTex', 'FontSize',15);
-    case 2
-        title('Bayesian Non-Parametric Mixture Model (CRP-GMM)','Interpreter','LaTex', 'FontSize',15);
-end
-
-% Visualize PDF of fitted GMM
- ml_plot_gmm_pdf(Xi_ref, Priors, Mu, Sigma, limits)  
 switch est_options.type   
     case 0
         title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
