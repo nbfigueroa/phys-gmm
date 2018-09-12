@@ -47,19 +47,19 @@ ylabel('$\xi_2$','Interpreter','LaTex','FontSize',20);
 % 1: GMM-EM Model Selection via BIC
 % 2: CRP-GMM (Collapsed Gibbs Sampler)
 est_options = [];
-est_options.type             = 2;   % GMM Estimation Algorithm Type   
+est_options.type             = 0;   % GMM Estimation Algorithm Type   
 
 % If algo 1 selected:
 est_options.maxK             = 15;  % Maximum Gaussians for Type 1
 est_options.fixed_K          = [];  % Fix K and estimate with EM for Type 1
 
 % If algo 0 or 2 selected:
-est_options.samplerIter      = 200;  % Maximum Sampler Iterations
+est_options.samplerIter      = 50;  % Maximum Sampler Iterations
                                     % For type 0: 20 iter is sufficient
                                     % For type 2: >100 iter are needed
                                     
 est_options.do_plots         = 1;   % Plot Estimation Statistics
-est_options.locality_scaling = 1;   % Scaling for the similarity to improve locality, Default=1
+est_options.locality_scaling = 0;   % Scaling for the similarity to improve locality, Default=1
 est_options.sub_sample       = 1;   % Size of sub-sampling of trajectories
 
 % Fit GMM to Trajectory Data
