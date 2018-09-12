@@ -53,7 +53,10 @@ The following datasets are provided in ```
 </>  
 
 -  **GMM fit on 2D Via-Point Dataset**  
-TODO...
+<p align="center">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/viapoint-data.png" width="360">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/viapoint-pcgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/viapoint-emgmm.png" width="360"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/viapoint-crpgmm.png" width="360">
+</>  
 
 -  **GMM fit on 3D Via-Point Dataset**  
 TODO...
