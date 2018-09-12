@@ -67,10 +67,14 @@ By setting ```est_options.do_plots= 1;``` the function will plot the correspondi
 TODO...
 
 - For the EM-based Model Selection approach we show the BIC curve computed with increasing K=1,...,15. The 1st and 2nd order numerical derivative of this curve is also plotted and the 'optimal' K is selected as the inflection point:  
-TODO...
+<p align="center">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/example-BIC.png" width="540">
+</>  
 
 - For the CRP-GMM we show the values of the posterior distribution p(Z|...) and the estimated clusters at each iteration:  
-TODO...
+<p align="center">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/example-CRP-stats.png" width="540">
+</>  
 
 ### Usage
 Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1,2]. To use this approach for DS learning, download the [lpv-opt](https://github.com/nbfigueroa/lpv-opt.git) package.   
