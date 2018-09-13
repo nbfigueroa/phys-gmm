@@ -1,6 +1,12 @@
 # phys-gmm
 This package contains the inference implementation (Collapsed Gibbs Sampler) for the "Physically Consistent Bayesian Non-Parametric Mixture Model" (PC-GMM) proposed in [1]. This approach is used to fit GMM on **trajectory data** while ensuring that the points clustered in each Gaussian represent/follow some linear dynamics.; i.e. not only should they be close in "Euclidean"-position space but they should also follow the same direction. 
 
+<p align="center">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Lshape_pcgmm.png" width="200">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Ashape_pcgmm.png" width="200"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Sshape_pcgmm.png" width="200"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Ashape_pcgmm.png" width="200">
+</>
+
+
 ### Instructions
 This package offers the physically-consistent GMM fitting approach, as well as examples and code for fitting GMM with standard EM approach and the Bayesian non-parametric approach following the Chinese Restaurant Process construction through the ```[Mu, Priors, Sigma] = fit_gmm()``` function by filling its options as follows:
 ```
