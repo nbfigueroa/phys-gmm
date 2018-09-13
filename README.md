@@ -78,6 +78,9 @@ The following datasets are provided in ```
 -  **GMM fit on 3D Via-Point Dataset**  
 TODO...
 
+-  **GMM fit on 3D Bumpy Snake Dataset**  
+TODO...
+
 ### Estimation Statistics
 By setting ```est_options.do_plots= 1;``` the function will plot the corresponding estimation statistics for each algorithm. 
 - For the PC-GMM we show the values of the posterior distribution p(C|...) and the estimated clusters at each iteration:  
