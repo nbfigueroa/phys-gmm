@@ -4,14 +4,13 @@ function [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options)
 est_type         = est_options.type;
 max_gaussians    = est_options.maxK;
 do_plots         = est_options.do_plots;
-locality_scaling = est_options.locality_scaling;
+[M N]            = size(Xi_ref);
 
 if isempty(est_options.fixed_K)
     fixed_K        = 0;
 else
     fixed_K = est_options.fixed_K;
 end
-[M N] = size(Xi_ref);
 
 if ~isempty(est_options.sub_sample)
     sub_sample       = est_options.sub_sample;
@@ -29,6 +28,12 @@ if isempty(est_options.samplerIter)
 else
     samplerIter = est_options.samplerIter;
 end
+
+if ~isempty(est_options.l_sensitivity)
+    l_sensitivity = est_options.l_sensitivity;
+else
+    l_sensitivity = 2;
+end
 switch est_type
     case 0
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,24 +41,32 @@ switch est_type
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                
         
         % Compute estimate of length-scale
-        [D, max_hist_D, max_D] = computePairwiseDistances(Xi_ref',1);
-        sigma = sqrt(max_hist_D/2);
-        l = 1/(2*sigma^2);
-        close all;
+        if est_options.estimate_l == 1
+            [D, mode_hist_D, mean_D] = computePairwiseDistances(Xi_ref',1);
+            sigma = sqrt(mode_hist_D/l_sensitivity);
+            l = 1/(2*sigma^2);
+            close all;
+        else
+            l = est_options.length_scale;
+        end
+        fprintf('Computed length-scale l=%2.4f \n',l);
         
         % Compute element-wise cosine similarities
         S = zeros(length(Xi_dot_ref),length(Xi_dot_ref));
         for i=1:length(Xi_dot_ref)
             for j=1:length(Xi_dot_ref)
-                % Compute Velocity component
-                % Normalize vectors
-                xi_dot_i = Xi_dot_ref(:,i)/norm(Xi_dot_ref(:,i));
-                xi_dot_j = Xi_dot_ref(:,j)/norm(Xi_dot_ref(:,j));
-                % Compute Angle
-                s_angle = atan2(xi_dot_i(2),xi_dot_i(1))-atan2(xi_dot_j(2),xi_dot_j(1));
-                 
+                % *** Option 1 ***: Compute Velocity component using tan function
+%                 % Normalize vectors
+%                 xi_dot_i = Xi_dot_ref(:,i)/norm(Xi_dot_ref(:,i));
+%                 xi_dot_j = Xi_dot_ref(:,j)/norm(Xi_dot_ref(:,j));                 
+%                 % Compute Angle
+%                 s_angle = atan2(xi_dot_i(2),xi_dot_i(1))-atan2(xi_dot_j(2),xi_dot_j(1));
+%                 cos_angle = cos(s_angle);
+
+                % *** Option 2 ***: Compute Velocity component using dot product
+                cos_angle = (Xi_dot_ref(:,i)'*Xi_dot_ref(:,j))/(norm(Xi_dot_ref(:,i))*norm(Xi_dot_ref(:,j)));                                
+                
                 % Compute shifted cosine of angle
-                cos_angle = cos(s_angle);
                 if isnan(cos_angle)
                     cos_angle = 0;
                 end
@@ -63,18 +76,11 @@ switch est_type
                 xi_i = Xi_ref(:,i);
                 xi_j = Xi_ref(:,j);
 
-                % LASA DATASET
-                if locality_scaling                     
-                    p = exp(-l*norm(xi_i - xi_j));
-                else
-                    p = 1;
-                end
-                
-                % With Euclidean pairwise kernel
-                f = p * s;                
+                % Euclidean pairwise position-kernel
+                p = exp(-l*norm(xi_i - xi_j));
                 
                 % Shifted Cosine Similarity of velocity vectors
-                S(i,j) = f;
+                S(i,j) = p * s;
                 
             end
         end
@@ -88,11 +94,12 @@ switch est_type
         end
         
         % Setting sampler/model options (i.e. hyper-parameters, alpha, Covariance matrix)
-        Xi_ref_mean = mean(Xi_ref,2);
+        Xi_ref_mean             = mean(Xi_ref,2);
         options                 = [];
-        options.type            = 'full';        % Type of Covariance Matrix: 'full' = NIW or 'Diag' = NIG
-        options.T               = samplerIter;   % Sampler Iterations
-        options.alpha           = max(0.1,0.1*(randi(11)-2)); % Concentration parameter
+        options.type            = 'full';                     % Type of Covariance Matrix: 'full' = NIW or 'Diag' = NIG
+        options.T               = samplerIter;                % Sampler Iterations
+%         options.alpha           = max(0.5,0.1*(randi(11)-2)); % Concentration parameter
+        options.alpha           = 2; % maximum of similarity function
         
         % Standard Base Distribution Hyper-parameter setting
         if strcmp(options.type,'diag')
@@ -101,11 +108,11 @@ switch est_type
         end
         if strcmp(options.type,'full')
             lambda.nu_0        = M;                                  % IW(Sigma_k|Lambda_0,nu_0): (degrees of freedom)
-            lambda.Lambda_0    = eye(M)*sum(diag(cov(Xi_ref')))/M;   % IW(Sigma_k|Lambda_0,nu_0): (Scale matrix)
-            %     lambda.Lambda_0    = diag(diag(cov(Xi_ref')));     % IW(Sigma_k|Lambda_0,nu_0): (Scale matrix)
+%             lambda.Lambda_0    = eye(M)*sum(diag(cov(Xi_ref')))/M;   % IW(Sigma_k|Lambda_0,nu_0): (Scale matrix)
+            lambda.Lambda_0    = diag(diag(cov(Xi_ref')));       % IW(Sigma_k|Lambda_0,nu_0): (Scale matrix)
         end
-        lambda.mu_0             = Xi_ref_mean;    % hyper for N(mu_k|mu_0,kappa_0)
-        lambda.kappa_0          = 1;            % hyper for N(mu_k|mu_0,kappa_0)       
+        lambda.mu_0             = Xi_ref_mean;                  % hyper for N(mu_k|mu_0,kappa_0)
+        lambda.kappa_0          = 1;                            % hyper for N(mu_k|mu_0,kappa_0)       
         
         % Run Collapsed Gibbs Sampler
         options.lambda    = lambda;
@@ -115,21 +122,39 @@ switch est_type
         
         % Extract Learnt cluster parameters
         unique_labels = unique(est_labels);                                
-        est_K = length(unique_labels);
-        Priors = zeros(1, est_K);
+        est_K      = length(unique_labels);
+        Priors     = zeros(1, est_K);
+        singletons = zeros(1, est_K);        
         for k=1:est_K
-            Priors(k) = sum(est_labels==unique_labels(k))/length(Xi_ref);
+            assigned_k = sum(est_labels==unique_labels(k));
+            Priors(k) = assigned_k/N;
+            singletons(k) = assigned_k < 2;
         end
         Mu     = Psi.Theta.Mu;
-        Sigma  = Psi.Theta.Sigma;        
+        Sigma  = Psi.Theta.Sigma;
+            
+        if any(singletons)
+            [~, est_labels] =  my_gmm_cluster(Xi_ref, Priors, Mu, Sigma, 'hard', []);
+            unique_labels = unique(est_labels);                                
+            est_K         = length(unique_labels);
+            singleton_idx = find(singletons == 1);
+            Mu(:,singleton_idx) = [];
+            Sigma(:,:,singleton_idx) = [];
+            Priors  = [];
+            for k=1:est_K
+                assigned_k = sum(est_labels==unique_labels(k));
+                Priors(k) = assigned_k/N;               
+            end
+        end
+        
         if do_plots
             if exist('h1b','var') && isvalid(h1b), delete(h1b);end
             stats_options = [];
-            stats_options.dataset      = 'Drawn Trajectory Data';
+            stats_options.dataset      = 'Sampler Stats';
             stats_options.true_labels  = [];
             stats_options.Psi          = Psi;
             [ h1b ] = plotSamplerStats( Psi_Stats, stats_options );
-        end
+        end        
         
     case 1
         

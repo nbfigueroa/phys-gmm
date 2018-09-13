@@ -17,26 +17,19 @@ grid on
 
 % Draw Reference Trajectories
 data = draw_mouse_data_on_DS(fig1, limits);
-Data = []; x0_all = [];
+Data = [];
 for l=1:length(data)    
-    % Check where demos end and shift
+    % Gather Data
     data_ = data{l};
     Data = [Data data_];
-    x0_all = [x0_all data_(1:2,1)];
 end
 
-%% Visualize Position/Velocity Trajectories
+% Visualize Position/Velocity Trajectories
 close;
 Xi_ref     = Data(1:2,:);
 Xi_dot_ref = Data(3:end,:);
-figure('Color',[1 1 1])
 vel_samples = 15; vel_size = 0.85;
 [h_data, h_vel] = plot_reference_trajectories(Data, vel_samples, vel_size);
-grid on;
-box on;
-title('Reference Trajectories','Interpreter','LaTex','FontSize',20);
-xlabel('$\xi_1$','Interpreter','LaTex','FontSize',20);
-ylabel('$\xi_2$','Interpreter','LaTex','FontSize',20);
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Step 2 (GMM FITTING): Fit GMM to Trajectory Data %%
@@ -60,7 +53,7 @@ est_options.samplerIter      = 50;  % Maximum Sampler Iterations
                                     
 est_options.do_plots         = 1;   % Plot Estimation Statistics
 est_options.locality_scaling = 0;   % Scaling for the similarity to improve locality, Default=1
-est_options.sub_sample       = 1;   % Size of sub-sampling of trajectories
+est_options.sub_sample       = 2;   % Size of sub-sampling of trajectories
 
 % Fit GMM to Trajectory Data
 [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);

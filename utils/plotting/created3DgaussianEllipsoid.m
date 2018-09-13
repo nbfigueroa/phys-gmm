@@ -1,10 +1,8 @@
-function [x,y,z] = created3DgaussianEllipsoid(mu,V,D)
+function [x,y,z] = created3DgaussianEllipsoid(mu,V,D, scale)
 % For N standard deviations spread of data, the radii of the eliipsoid will
 % be given by N*SQRT(eigenvalues).
 
-N = 1; % choose your own N
-radii = N*sqrt(diag(D));
-radii = N*diag(D);
+radii = scale*diag(D);
 % generate data for "unrotated" ellipsoid
 [xc,yc,zc] = ellipsoid(0,0,0,radii(1),radii(2),radii(3));
 

@@ -1,4 +1,4 @@
-function [D, max_hist_D, max_D] = computePairwiseDistances(X, display_hist)
+function [D, max_hist_D, mean_D] = computePairwiseDistances(X, display_hist)
 
 maxSamples = 10000;
 if length(X) < maxSamples

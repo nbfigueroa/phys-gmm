@@ -60,7 +60,8 @@ Psi_Stats.TotalClust   = zeros(1,T);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% Augment Similarity Matrix with alpha on diagonal %%%
-S = S + eye(N)*(alpha-1);
+% S = S + eye(N)*(alpha-1);
+S = S + eye(N)*(alpha);
 S_alpha = num2cell(S,2);
 
 %%% Compute Initial Customer/Table Assignments and Likelihoods %%%
