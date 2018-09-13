@@ -9,7 +9,7 @@ This package contains the inference implementation (Collapsed Gibbs Sampler) for
 
 ### Instructions
 This package offers the physically-consistent GMM fitting approach, as well as examples and code for fitting GMM with standard EM approach and the Bayesian non-parametric approach following the Chinese Restaurant Process construction through the ```[Mu, Priors, Sigma] = fit_gmm()``` function by filling its options as follows:
-```
+```Matlab
 %%%%%%%%%%%%%%%%%% GMM Estimation Algorithm %%%%%%%%%%%%%%%%%%%%%%
 % 0: Physically-Consistent Non-Parametric (Collapsed Gibbs Sampler)
 % 1: GMM-EM Model Selection via BIC
