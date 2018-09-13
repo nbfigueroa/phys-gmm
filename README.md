@@ -54,7 +54,7 @@ demo_loadData.m
 ```
 ### Example Datasets
 The following datasets are provided in ```
-./datasets``` folder. Following we show fits from pc-gmm **(top right)**, EM fit with Model Selection via BIC score **(bottom left)** and Bayesian Non-Parametric inference via CRP formulation **(bottom right)**.
+./datasets``` folder. Following we show fits from pc-gmm **(left)**, EM fit with Model Selection via BIC score **(center)** and Bayesian Non-Parametric inference via CRP formulation **(right)**.
 
 -  **GMM fit on 2D Concentric Circles Dataset**
 
