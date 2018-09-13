@@ -51,5 +51,6 @@ else
     warning('Dimensionality not supported');
 end
 
+axis equal;
 
 end

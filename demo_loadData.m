@@ -31,7 +31,6 @@ Data = load_dataset(pkg_dir, chosen_dataset, sub_sample, nb_trajectories);
 % Position/Velocity Trajectories
 vel_samples = 5; vel_size = 0.75; 
 [h_data, h_vel] = plot_reference_trajectories(Data, vel_samples, vel_size);
-axis equal;
 
 % Extract Position and Velocities
 M          = size(Data,1)/2;    
@@ -75,49 +74,12 @@ est_options.length_scale     = [];  % if estimate_l=0 you can define your own
 % Fit GMM to Trajectory Data
 [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
 
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Step 3 (FIT Visualization): Visualize Gaussian Components and labels %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Step 3: Visualize Gaussian Components and labels on clustered trajectories %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Extract Cluster Labels
 est_K      = length(Priors);
 [~, est_labels] =  my_gmm_cluster(Xi_ref, Priors, Mu, Sigma, 'hard', []);
 
-if M == 2
-    % Visualize Cluster Parameters Trajectory Data
-    plotGMMParameters( Xi_ref, est_labels, Mu, Sigma);
-    limits = axis;
-    switch est_options.type
-        case 0
-            title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
-        case 1
-            title('Best fit GMM with EM-based BIC Model Selection','Interpreter','LaTex', 'FontSize',15);
-        case 2
-            title('Bayesian Non-Parametric Mixture Model (CRP-GMM)','Interpreter','LaTex', 'FontSize',15);
-    end
-    
-    % Visualize PDF of fitted GMM
-    ml_plot_gmm_pdf(Xi_ref, Priors, Mu, Sigma, limits)
-    switch est_options.type
-        case 0
-            title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
-        case 1
-            title('Best fit GMM with EM-based BIC Model Selection','Interpreter','LaTex', 'FontSize',15);
-        case 2
-            title('Bayesian Non-Parametric Mixture Model (CRP-GMM)','Interpreter','LaTex', 'FontSize',15);
-    end
-    
-elseif M == 3
-    GMM = [];
-    GMM.Priors = Priors; GMM.Mu = Mu; GMM.Sigma = Sigma;
-    [h_gmm] = plot3DGMMParameters(Xi_ref, GMM, est_labels);
-    switch est_options.type
-        case 0
-            title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
-        case 1
-            title('Best fit GMM with EM-based BIC Model Selection','Interpreter','LaTex', 'FontSize',15);
-        case 2
-            title('Bayesian Non-Parametric Mixture Model (CRP-GMM)','Interpreter','LaTex', 'FontSize',15);
-    end
-    view(-120, 30);
-    axis equal
-end
+% Visualize Estimated Parameters
+[h_gmm]  = visualizeEstimatedGMM(Xi_ref,  Priors, Mu, Sigma, est_labels, est_options);

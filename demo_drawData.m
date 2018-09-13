@@ -58,33 +58,13 @@ est_options.sub_sample       = 2;   % Size of sub-sampling of trajectories
 % Fit GMM to Trajectory Data
 [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
 
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Step 3 (FIT Visualization): Visualize Gaussian Components and labels %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Step 3: Visualize Gaussian Components and labels on clustered trajectories %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Extract Cluster Labels
-est_K      = length(Priors); 
+est_K      = length(Priors);
 [~, est_labels] =  my_gmm_cluster(Xi_ref, Priors, Mu, Sigma, 'hard', []);
 
-% Visualize Cluster Parameters Trajectory Data
-plotGMMParameters( Xi_ref, est_labels, Mu, Sigma);
-limits_ = limits + [-0.015 0.015 -0.015 0.015];
-axis(limits_)
-switch est_options.type   
-    case 0
-        title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
-    case 1        
-        title('Best fit GMM with EM-based BIC Model Selection','Interpreter','LaTex', 'FontSize',15);
-    case 2
-        title('Bayesian Non-Parametric Mixture Model (CRP-GMM)','Interpreter','LaTex', 'FontSize',15);
-end
+% Visualize Estimated Parameters
+[h_gmm]  = visualizeEstimatedGMM(Xi_ref,  Priors, Mu, Sigma, est_labels, est_options);
 
-% Visualize PDF of fitted GMM
- ml_plot_gmm_pdf(Xi_ref, Priors, Mu, Sigma, limits)  
-switch est_options.type   
-    case 0
-        title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
-    case 1        
-        title('Best fit GMM with EM-based BIC Model Selection','Interpreter','LaTex', 'FontSize',15);
-    case 2
-        title('Bayesian Non-Parametric Mixture Model (CRP-GMM)','Interpreter','LaTex', 'FontSize',15);
-end
