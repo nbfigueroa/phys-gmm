@@ -15,23 +15,34 @@ This package offers the physically-consistent GMM fitting approach, as well as e
 % 1: GMM-EM Model Selection via BIC
 % 2: CRP-GMM (Collapsed Gibbs Sampler)
 est_options = [];
-est_options.type             = 0;   % GMM Estimation Algorithm Type   
+est_options.type             = 0;   % GMM Estimation Alorithm Type   
 
 % If algo 1 selected:
 est_options.maxK             = 15;  % Maximum Gaussians for Type 1
 est_options.fixed_K          = [];  % Fix K and estimate with EM for Type 1
 
 % If algo 0 or 2 selected:
-est_options.samplerIter      = 20;  % Maximum Sampler Iterations
-                                    % For type 0: 20 iter is sufficient
+est_options.samplerIter      = 100;  % Maximum Sampler Iterations
+                                    % For type 0: 20-50 iter is sufficient
                                     % For type 2: >100 iter are needed
                                     
 est_options.do_plots         = 1;   % Plot Estimation Statistics
-est_options.locality_scaling = 1;   % Scaling for the similarity to improve locality, Default=1
-est_options.sub_sample       = 2;   % Size of sub-sampling of trajectories
+est_options.sub_sample       = 1;   % Size of sub-sampling of trajectories
+
+% Metric Hyper-parameters
+est_options.estimate_l       = 1;   % Estimate the lengthscale, if set to 1
+est_options.l_sensitivity    = 2;   % lengthscale sensitivity [1-10->>100]
+                                    % Default value is set to '2' as in the
+                                    % paper, for very messy, close to
+                                    % self-interescting trajectories, we
+                                    % recommend a higher value
+est_options.length_scale     = [];  % if estimate_l=0 you can define your own
+                                    % l, when setting l=0 only
+                                    % directionality is taken into account
 
 % Fit GMM to Trajectory Data
 [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
+
 ```
 To test the function, you can either draw 2D data by running the demo script:
 ```
