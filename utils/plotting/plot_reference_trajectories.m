@@ -46,11 +46,9 @@ elseif M == 3
     xlabel('$\xi_1$','Interpreter','LaTex','FontSize',20);
     ylabel('$\xi_2$','Interpreter','LaTex','FontSize',20);
     zlabel('$\xi_3$','Interpreter','LaTex','FontSize',20);
-        
+    axis equal;
 else
     warning('Dimensionality not supported');
 end
-
-axis equal;
 
 end

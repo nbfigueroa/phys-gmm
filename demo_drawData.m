@@ -47,13 +47,23 @@ est_options.maxK             = 15;  % Maximum Gaussians for Type 1
 est_options.fixed_K          = [];  % Fix K and estimate with EM for Type 1
 
 % If algo 0 or 2 selected:
-est_options.samplerIter      = 50;  % Maximum Sampler Iterations
-                                    % For type 0: 20 iter is sufficient
+est_options.samplerIter      = 300;  % Maximum Sampler Iterations
+                                    % For type 0: 20-50 iter is sufficient
                                     % For type 2: >100 iter are needed
                                     
 est_options.do_plots         = 1;   % Plot Estimation Statistics
-est_options.locality_scaling = 0;   % Scaling for the similarity to improve locality, Default=1
 est_options.sub_sample       = 2;   % Size of sub-sampling of trajectories
+
+% Metric Hyper-parameters
+est_options.estimate_l       = 1;   % Estimate the lengthscale, if set to 1
+est_options.l_sensitivity    = 2;   % lengthscale sensitivity [1-10->>100]
+                                    % Default value is set to '2' as in the
+                                    % paper, for very messy, close to
+                                    % self-interescting trajectories, we
+                                    % recommend a higher value
+est_options.length_scale     = [];  % if estimate_l=0 you can define your own
+                                    % l, when setting l=0 only
+                                    % directionality is taken into account
 
 % Fit GMM to Trajectory Data
 [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);

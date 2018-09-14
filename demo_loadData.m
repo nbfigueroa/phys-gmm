@@ -12,24 +12,25 @@
 close all; clear all; clc
 %%%%%%%%%%%%%%%%%%%%%%%%% Select a Dataset %%%%%%%%%%%%%%%%%%%%%%%%
 % 1:  Concentric Circle Dataset (2D)
-% 2:  Snake Dataset (2D)
-% 3:  Messy Snake Dataset (2D)
-% 4:  Via-Point Dataset (2D)
-% 5:  L-shape Dataset (2D)
-% 6:  A-shape Dataset (2D)
-% 7:  S-shape Dataset (2D)
-% 8:  Via-point Dataset (3D)   -- 15 trajectories recorded at 100Hz
-% 9:  Sink Dataset (3D)        -- 21 trajectories recorded at 100Hz
-% 10: Bumpy Snake Dataset (3D) -- 10 trajectories recorded at 100Hz
+% 2:  Opposing Motions Dataset  (2D)
+% 3:  Snake Dataset             (2D)
+% 4:  Messy Snake Dataset       (2D)
+% 5:  Via-Point Dataset         (2D)
+% 6:  L-shape Dataset           (2D)
+% 7:  A-shape Dataset           (2D)
+% 8:  S-shape Dataset           (2D)
+% 9:  Via-point Dataset         (3D) -- 15 trajectories recorded at 100Hz
+% 10: Sink Dataset              (3D) -- 21 trajectories recorded at 100Hz
+% 11: Bumpy Snake Dataset       (3D) -- 10 trajectories recorded at 100Hz
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 pkg_dir         = '/home/nbfigueroa/Dropbox/PhD_papers/CoRL-2018/code/phys-gmm/';
-chosen_dataset  = 7; 
+chosen_dataset  = 2; 
 sub_sample      = 1; % '>2' for real 3D Datasets, '1' for 2D toy datasets
 nb_trajectories = 0; % For real 3D data
 Data = load_dataset(pkg_dir, chosen_dataset, sub_sample, nb_trajectories);
 
 % Position/Velocity Trajectories
-vel_samples = 5; vel_size = 0.75; 
+vel_samples = 10; vel_size = 0.75; 
 [h_data, h_vel] = plot_reference_trajectories(Data, vel_samples, vel_size);
 
 % Extract Position and Velocities
@@ -46,7 +47,7 @@ Xi_dot_ref = Data(M+1:end,:);
 % 1: GMM-EM Model Selection via BIC
 % 2: CRP-GMM (Collapsed Gibbs Sampler)
 est_options = [];
-est_options.type             = 0;   % GMM Estimation Alorithm Type   
+est_options.type             = 1;   % GMM Estimation Algorithm Type   
 
 % If algo 1 selected:
 est_options.maxK             = 15;  % Maximum Gaussians for Type 1
