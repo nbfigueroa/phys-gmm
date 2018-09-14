@@ -56,24 +56,28 @@ These examples + more datasets are provided in ```
 ./datasets``` folder. Following we show some **notably challenging trajectory datasets** that cannot be correctly clustered with the standard GMM either through MLE via the EM algorithm **(center)** or the CRP-GMM via collapsed Gibbs sampling **(right)**, but are correctly clustered through our proposed approach **(left)**.
 
 -  **GMM fit on 2D Concentric Circles Dataset**
+Comment here...
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-data.png" width="220">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="220">
 </>
 
 -  **GMM fit on 2D Opposing Motions Dataset**
+Comment here...
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-data.png" width="220">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-crpgmm.png" width="220">
 </>
 
 -  **GMM fit on 2D Multiple Motions Dataset**
+Comment here...
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-data.png" width="220">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-crpgmm.png" width="220">
 </>
 
 - **GMM fit on 2D Messy Snake Dataset**
+Comment here...
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-data.png" width="220">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-crpgmm.png" width="220">
