@@ -73,10 +73,10 @@ These examples + more datasets are provided in ```
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-crpgmm.png" width="220">
 </>
 
-- **GMM fit on 2D Snake Dataset**
+- **GMM fit on 2D Messy Snake Dataset**
 <p align="center">
-  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-data.png" width="220">
-<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/sine-crpgmm.png" width="220">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-data.png" width="220">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-crpgmm.png" width="220">
 </>  
 
 -  **GMM fit on 2D Via-Point Dataset**  
