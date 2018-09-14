@@ -30,7 +30,7 @@ est_options.do_plots         = 1;   % Plot Estimation Statistics
 est_options.sub_sample       = 1;   % Size of sub-sampling of trajectories
 
 % Metric Hyper-parameters
-est_options.estimate_l       = 2;   % Estimate the lengthscale, if set to 1
+est_options.estimate_l       = 1;   % Estimate the lengthscale, if set to 1
 est_options.l_sensitivity    = 2;   % lengthscale sensitivity [1-10->>100]
                                     % Default value is set to '2' as in the
                                     % paper, for very messy, close to
