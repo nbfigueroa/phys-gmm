@@ -52,8 +52,8 @@ or you can load pre-drawn 2D or real 3D datasets with the following script:
 demo_loadData.m
 ```
 ### Example Datasets
-The following datasets are provided in ```
-./datasets``` folder. Following we show fits from pc-gmm **(left)**, EM fit with Model Selection via BIC score **(center)** and Bayesian Non-Parametric inference via CRP formulation **(right)**.
+These examples + more datasets are provided in ```
+./datasets``` folder. We show fits from pc-gmm **(left)**, EM fit with Model Selection via BIC score search **(center)** and Bayesian Non-Parametric inference via CRP formulation **(right)**.
 
 -  **GMM fit on 2D Concentric Circles Dataset**
 <p align="center">
