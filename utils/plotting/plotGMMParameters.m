@@ -23,7 +23,7 @@ if (M == 2) || (M == 3)
            [h_gmm_, h_ctr_ ] = plotGMM(Mu(:,jj), Sigma(:,:,jj), clust_color, 1);
            h_gmm = [h_gmm h_gmm_];
            h_ctr = [h_ctr h_ctr_];           
-            text(Mu(1,jj),Mu(2,jj),num2str(jj),'FontSize',20);
+%             text(Mu(1,jj),Mu(2,jj),num2str(jj),'FontSize',20);
             alpha(.5)
         end 
         box on

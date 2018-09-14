@@ -18,21 +18,23 @@ if ~isempty(est_options.sub_sample)
     Xi_dot_ref = Xi_dot_ref(:,1:sub_sample:end);
 end
 
-if isempty(est_options.samplerIter)
-    if est_type == 0
-        samplerIter = 20;
+if est_type ~= 1    
+    if isempty(est_options.samplerIter)
+        if est_type == 0
+            samplerIter = 20;
+        end
+        if est_type == 2
+            samplerIter = 200;
+        end
+    else
+        samplerIter = est_options.samplerIter;
     end
-    if est_type == 2
-        samplerIter = 200;
+    
+    if ~isempty(est_options.l_sensitivity)
+        l_sensitivity = est_options.l_sensitivity;
+    else
+        l_sensitivity = 2;
     end
-else
-    samplerIter = est_options.samplerIter;
-end
-
-if ~isempty(est_options.l_sensitivity)
-    l_sensitivity = est_options.l_sensitivity;
-else
-    l_sensitivity = 2;
 end
 switch est_type
     case 0
