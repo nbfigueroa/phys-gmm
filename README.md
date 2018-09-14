@@ -53,7 +53,7 @@ demo_loadData.m
 ```
 ### Example Datasets
 These examples + more datasets are provided in ```
-./datasets``` folder. Following we show some examples of notably challenging **trajectory datasets** that cannot be correctly clustered with the standard GMM either through MLE via the EM algorithm **(center)** or the CRP-GMM via collapsed Gibbs sampling **(right)**, but are correctly clustered through our proposed approach pc-gmm **(left)**.
+./datasets``` folder. Following we show some examples of ***notably challenging trajectory datasets** that cannot be correctly clustered with the standard GMM either through MLE via the EM algorithm **(center)** or the CRP-GMM via collapsed Gibbs sampling **(right)**, but are correctly clustered through our proposed approach pc-gmm **(left)**.
 
 -  **GMM fit on 2D Concentric Circles Dataset**
 <p align="center">
