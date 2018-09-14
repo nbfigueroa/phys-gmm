@@ -104,7 +104,7 @@ By setting ```est_options.do_plots= 1;``` the function will plot the correspondi
 </>  
   
 ### Known Issues and Limitations  
-The only limitation of the proposed approach is its computational complexity. Although the collapsed gibbs sampler needs significantly less iterations than that for the CRP-GMM, is computationally taxing as all ``customer assignment`` have to be sampled in each iteration. Specifically, the first iteration is slow as the sampler begins with N clusters....more discussion here.
+The only limitation of the proposed approach is its computational complexity. Although the collapsed gibbs sampler needs significantly less iterations than that for the CRP-GMM, it is computationally taxing as all ``customer assignments`` have to be sampled in each iteration. Specifically, the first iteration is slow as the sampler begins with N clusters....more discussion here.
 
 ### Usage
 Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1,2]. To use this approach for DS learning, download the [ds-opt](https://github.com/nbfigueroa/ds-opt.git) package.   
