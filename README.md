@@ -79,12 +79,6 @@ These examples + more datasets are provided in ```
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-crpgmm.png" width="220">
 </>  
 
--  **GMM fit on 2D Via-Point Dataset**  
-<p align="center">
-  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/viapoint-data.png" width="220">
-<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/viapoint-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/viapoint-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/viapoint-crpgmm.png" width="220">
-</>  
-
 -  **GMM fit on 3D Via-Point Dataset**  
 TODO...
 
