@@ -56,10 +56,16 @@ The following datasets are provided in ```
 ./datasets``` folder. Following we show fits from pc-gmm **(left)**, EM fit with Model Selection via BIC score **(center)** and Bayesian Non-Parametric inference via CRP formulation **(right)**.
 
 -  **GMM fit on 2D Concentric Circles Dataset**
-
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-data.png" width="220">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="220">
+</>
+
+
+-  **GMM fit on 2D Opposing Motions Dataset**
+<p align="center">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-data.png" width="220">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-crpgmm.png" width="220">
 </>
 
 - **GMM fit on 2D Snake Dataset**
