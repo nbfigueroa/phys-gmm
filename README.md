@@ -1,5 +1,5 @@
 # phys-gmm
-This package contains the inference implementation (Collapsed Gibbs Sampler) for the "Physically Consistent Bayesian Non-Parametric Mixture Model" (PC-GMM) proposed in [1]. This approach is used to **automatically** (no model selection!) fit GMM on **trajectory data** while ensuring that the points clustered in each Gaussian represent/follow a linear dynamics model, in other words they be close in "position"-space and follow the same direction in "velocity"-space. 
+This package contains the inference implementation (Collapsed Gibbs Sampler) for the "Physically Consistent Bayesian Non-Parametric Mixture Model" (PC-GMM) proposed in [1]. This approach is used to **automatically** (no model selection!) fit GMM on **trajectory data** while ensuring that the points clustered in each Gaussian represent/follow a linear dynamics model, in other words the points assigned to each Gaussian should be close in "position"-space and follow the same direction in "velocity"-space as well.
 
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Lshape_pcgmm.png" width="220">
