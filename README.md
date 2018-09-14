@@ -1,5 +1,5 @@
 # phys-gmm
-This package contains the inference implementation (Collapsed Gibbs Sampler) for the "Physically Consistent Bayesian Non-Parametric Mixture Model" (PC-GMM) proposed in [1]. This approach is used to **automatically** (no model selection!) fit GMM on **trajectory data** while ensuring that the points clustered in each Gaussian represent/follow a linear dynamics model, in other words they be close in "position"-space and follow the same direction in "velocity"-space. 
+This package contains the inference implementation (Gibbs Sampler) for the "Physically Consistent Bayesian Non-Parametric Mixture Model" (PC-GMM) proposed in [1]. This approach is used to **automatically** (no model selection!) fit GMM on **trajectory data** while ensuring that the points clustered in each Gaussian represent/follow a linear dynamics model, in other words the points assigned to each Gaussian should be close in "position"-space and follow the same direction in "velocity"-space.
 
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Lshape_pcgmm.png" width="220">
@@ -30,7 +30,7 @@ est_options.do_plots         = 1;   % Plot Estimation Statistics
 est_options.sub_sample       = 1;   % Size of sub-sampling of trajectories
 
 % Metric Hyper-parameters
-est_options.estimate_l       = 2;   % Estimate the lengthscale, if set to 1
+est_options.estimate_l       = 1;   % Estimate the lengthscale, if set to 1
 est_options.l_sensitivity    = 2;   % lengthscale sensitivity [1-10->>100]
                                     % Default value is set to '2' as in the
                                     % paper, for very messy, close to
@@ -53,7 +53,7 @@ demo_loadData.m
 ```
 ### Example Datasets
 These examples + more datasets are provided in ```
-./datasets``` folder. Following we show some **notably challenging trajectory datasets** that cannot be correctly clustered with the standard GMM either through MLE via the EM algorithm **(center)** or the CRP-GMM via collapsed Gibbs sampling **(right)**, but are correctly clustered through our proposed approach pc-gmm **(left)**.
+./datasets``` folder. Following we show some **notably challenging trajectory datasets** that cannot be correctly clustered with the standard GMM either through MLE via the EM algorithm **(center)** or the CRP-GMM via collapsed Gibbs sampling **(right)**, but are correctly clustered through our proposed approach **(left)**.
 
 -  **GMM fit on 2D Concentric Circles Dataset**
 <p align="center">
@@ -61,11 +61,16 @@ These examples + more datasets are provided in ```
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="220">
 </>
 
-
 -  **GMM fit on 2D Opposing Motions Dataset**
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-data.png" width="220">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-crpgmm.png" width="220">
+</>
+
+-  **GMM fit on 2D Multiple Motions Dataset**
+<p align="center">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-data.png" width="220">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-crpgmm.png" width="220">
 </>
 
 - **GMM fit on 2D Snake Dataset**
