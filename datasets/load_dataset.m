@@ -34,7 +34,7 @@ end
 if dataset <= 5
     Data_ = load(strcat(pkg_dir,'/datasets/',dataset_name));
     Data = Data_.Data(:,1:sub_sample:end);
-elseif dataset <= 7
+elseif dataset <= 8
     data_ = load(strcat(pkg_dir,'/datasets/',dataset_name));
     data = data_.data;
     N = length(data);    

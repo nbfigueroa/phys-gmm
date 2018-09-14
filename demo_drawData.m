@@ -34,7 +34,6 @@ vel_samples = 15; vel_size = 0.85;
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Step 2 (GMM FITTING): Fit GMM to Trajectory Data %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%% GMM Estimation Algorithm %%%%%%%%%%%%%%%%%%%%%%
 % 0: Physically-Consistent Non-Parametric (Collapsed Gibbs Sampler)
 % 1: GMM-EM Model Selection via BIC
