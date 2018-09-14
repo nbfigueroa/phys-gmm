@@ -7,23 +7,25 @@ switch dataset
     case 2
         dataset_name = '2D_opposing.mat';           
     case 3
-        dataset_name = '2D_snake.mat';
+        dataset_name = '2D_multiple.mat';           
     case 4
+        dataset_name = '2D_snake.mat';
+    case 5
         dataset_name = '2D_messy-snake.mat';
-    case 5 
+    case 6 
         dataset_name = '2D_viapoint.mat';
-    case 6
-        dataset_name = '2D_Lshape.mat';
     case 7
-        dataset_name = '2D_Ashape.mat';
+        dataset_name = '2D_Lshape.mat';
     case 8
-        dataset_name = '2D_Sshape.mat';
+        dataset_name = '2D_Ashape.mat';
     case 9
+        dataset_name = '2D_Sshape.mat';
+    case 10
         dataset_name = '3D_viapoint_2.mat';
         traj_ids = [1 2];
-    case 10
-        dataset_name = '3D_sink.mat';
     case 11
+        dataset_name = '3D_sink.mat';
+    case 12
         dataset_name = '3D_bumpy-snake.mat';
 end
 
@@ -31,10 +33,10 @@ if isempty(sub_sample)
    sub_sample = 2; 
 end
 
-if dataset <= 5
+if dataset <= 6
     Data_ = load(strcat(pkg_dir,'/datasets/',dataset_name));
     Data = Data_.Data(:,1:sub_sample:end);
-elseif dataset <= 8
+elseif dataset <= 9
     data_ = load(strcat(pkg_dir,'/datasets/',dataset_name));
     data = data_.data;
     N = length(data);    

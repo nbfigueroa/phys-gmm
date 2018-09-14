@@ -206,17 +206,35 @@ switch est_type
             xlim([1 samplerIter])
             xlabel('Gibbs Iteration','Interpreter','LaTex','Fontsize',20); ylabel('$\Psi$ = Estimated K','Interpreter','LaTex','Fontsize',20);
         end
+
         % Extract Learnt cluster parameters
-        unique_labels = unique(est_labels);
-        est_K = length(unique_labels);
-        Priors = zeros(1, est_K);
+        unique_labels = unique(est_labels);                              
+        est_K         = length(unique_labels);
+        Priors        = zeros(1, est_K);
+        singletons    = zeros(1, est_K);        
         for k=1:est_K
-            Priors(k)    = sum(est_labels==unique_labels(k))/length(Xi_ref(:,1:end));
-            
+            assigned_k = sum(est_labels==unique_labels(k));
+            Priors(k) = assigned_k/N;
+            singletons(k) = assigned_k < 2;
         end
         Mu    = mean_record {Maxiter};
         Sigma = covariance_record{Maxiter};
         
+        % Remove Singleton Clusters
+        if any(singletons)
+            [~, est_labels] =  my_gmm_cluster(Xi_ref, Priors, Mu, Sigma, 'hard', []);
+            unique_labels = unique(est_labels);                                
+            est_K         = length(unique_labels);
+            Mu    = Mu(:,unique_labels);
+            Sigma = Sigma(:,:,unique_labels);
+            Priors  = [];
+            for k=1:est_K
+                assigned_k = sum(est_labels==unique_labels(k));
+                Priors(k) = assigned_k/N;               
+            end
+        end
+        
+
 end
 
 
