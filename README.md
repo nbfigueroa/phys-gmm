@@ -62,18 +62,25 @@ Comment here...
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/concentric-crpgmm.png" width="220">
 </>
 
--  **GMM fit on 2D Opposing Motions Dataset**  
+-  **GMM fit on 2D Opposing Motions (Different Targets) Dataset**  
 Comment here...
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-data.png" width="220">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/opposing-crpgmm.png" width="220">
 </>
 
--  **GMM fit on 2D Multiple Motions Dataset**  
+-  **GMM fit on 2D Multiple Motions (Different Targets) Dataset**  
 Comment here...
 <p align="center">
   <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-data.png" width="220">
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multiple-crpgmm.png" width="220">
+</>
+  
+-  **GMM fit on 2D Multiple Motions (Same Target) Dataset**  
+Comment here...
+<p align="center">
+  <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multi-behavior_data.png" width="220">
+<img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multi-behavior_pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multi-behavior_emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/multi-behavior_crpgmm.png" width="220">
 </>
 
 - **GMM fit on 2D Messy Snake Dataset**  
