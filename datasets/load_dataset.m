@@ -21,11 +21,13 @@ switch dataset
     case 9
         dataset_name = '2D_Sshape.mat';
     case 10
+        dataset_name = '2D_multi-behavior.mat';        
+    case 11
         dataset_name = '3D_viapoint_2.mat';
         traj_ids = [1 2];
-    case 11
-        dataset_name = '3D_sink.mat';
     case 12
+        dataset_name = '3D_sink.mat';
+    case 13
         dataset_name = '3D_bumpy-snake.mat';
 end
 
@@ -36,7 +38,7 @@ end
 if dataset <= 6
     Data_ = load(strcat(pkg_dir,'/datasets/',dataset_name));
     Data = Data_.Data(:,1:sub_sample:end);
-elseif dataset <= 9
+elseif dataset <= 10
     data_ = load(strcat(pkg_dir,'/datasets/',dataset_name));
     data = data_.data;
     N = length(data);    
