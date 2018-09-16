@@ -117,10 +117,9 @@ By setting ```est_options.do_plots= 1;``` the function will plot the correspondi
 The only limitation of the proposed approach is its computational complexity. Although the collapsed gibbs sampler needs significantly less iterations than that for the CRP-GMM, it is computationally taxing as all ``customer assignments`` have to be sampled in each iteration. Specifically, the first iteration is slow as the sampler begins with N clusters....more discussion here.
 
 ### Usage
-Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1,2]. To use this approach for DS learning, download the [ds-opt](https://github.com/nbfigueroa/ds-opt.git) package.   
+Such physically-consistent clustering is particularly useful for learning Dynamical Systems (DS) that are formulated as Linear Parameter Varying (LPV) systems, as introduced in [1]. To use this approach for DS learning, download the [ds-opt](https://github.com/nbfigueroa/ds-opt.git) package.   
 
 **References**    
 > [1] Figueroa, N. and Billard, A. (2018) "A Physically-Consistent Bayesian Non-Parametric Mixture Model for Dynamical System Learning". In Proceedings of the 2nd Conference on Robot Learning (CoRL). Accepted.  
-> [2] Mirrazavi Salehian, S. S. (2018) "Compliant control of Uni/ Multi- robotic arms with dynamical systems". PhD Thesis.  
 
 **Contact**: [Nadia Figueroa](http://lasa.epfl.ch/people/member.php?SCIPER=238387) (nadia.figueroafernandez AT epfl dot ch)
