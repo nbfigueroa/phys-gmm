@@ -4,7 +4,7 @@ function [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options)
 est_type         = est_options.type;
 max_gaussians    = est_options.maxK;
 do_plots         = est_options.do_plots;
-[M N]            = size(Xi_ref);
+[M,N]            = size(Xi_ref);
 
 if isempty(est_options.fixed_K)
     fixed_K        = 0;
@@ -45,6 +45,9 @@ switch est_type
         % Compute estimate of length-scale
         if est_options.estimate_l == 1
             [D, mode_hist_D, mean_D] = computePairwiseDistances(Xi_ref',1);
+            if mode_hist_D == 0
+                mode_hist_D = mean_D;
+            end
             sigma = sqrt(mode_hist_D/l_sensitivity);
             l = 1/(2*sigma^2);
             close all;
@@ -149,6 +152,22 @@ switch est_type
             end
         end
         
+        %% Re-estimate GMM parameters, needed for >2D data
+        if M > 2
+            Mu_k = Mu;  Sigma_k = Sigma;
+            for k=1:length(unique_labels)
+                cluster_points = Xi_ref(:,est_labels == unique_labels(k));
+                if ~isempty(cluster_points)
+                    [ V_k, L_k, Mu_k(:,k) ] = my_pca( cluster_points );
+                    Sigma_k(:,:,k) = V_k*L_k*V_k';
+                end
+            end
+            rel_dilation_fact = 0.25;
+            Sigma_k = adjust_Covariances(Priors, Sigma_k, 1, rel_dilation_fact);
+            Mu    = Mu_k;
+            Sigma = Sigma_k;
+        end        
+        
         if do_plots
             if exist('h1b','var') && isvalid(h1b), delete(h1b);end
             stats_options = [];
@@ -171,7 +190,8 @@ switch est_type
         end
         % Train GMM with Optimal k
         warning('off', 'all'); % there are a lot of really annoying warnings when fitting GMMs
-        GMM_full = fitgmdist([Xi_ref]', k, 'Start', 'plus', 'CovarianceType','full', 'Regularize', .000001, 'Replicates', 10); %fit a GMM to our data
+        %fit a GMM to our data
+        GMM_full = fitgmdist([Xi_ref]', k, 'Start', 'plus', 'CovarianceType','full', 'Regularize', .000001, 'Replicates', 10); 
         warning('on', 'all');
         
         % Extract Model Parameters

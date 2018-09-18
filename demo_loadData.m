@@ -36,7 +36,8 @@ vel_samples = 15; vel_size = 0.75;
 [h_data, h_vel] = plot_reference_trajectories(Data, vel_samples, vel_size);
 
 % Extract Position and Velocities
-M          = size(Data,1)/2;    
+[M,N]      = size(Data);    
+M = M/2;
 Xi_ref     = Data(1:M,:);
 Xi_dot_ref = Data(M+1:end,:);       
 
@@ -52,7 +53,7 @@ est_options.type             = 1;   % GMM Estimation Algorithm Type
 
 % If algo 1 selected:
 est_options.maxK             = 15;  % Maximum Gaussians for Type 1
-est_options.fixed_K          = [];  % Fix K and estimate with EM for Type 1
+est_options.fixed_K          = round(N/2);  % Fix K and estimate with EM for Type 1
 
 % If algo 0 or 2 selected:
 est_options.samplerIter      = 200;  % Maximum Sampler Iterations
@@ -74,8 +75,9 @@ est_options.length_scale     = [];  % if estimate_l=0 you can define your own
                                     % directionality is taken into account
 
 % Fit GMM to Trajectory Data
+tic;
 [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options);
-
+toc;
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Step 3: Visualize Gaussian Components and labels on clustered trajectories %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

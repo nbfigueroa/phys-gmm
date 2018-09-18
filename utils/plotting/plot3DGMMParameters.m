@@ -17,8 +17,12 @@ function [hf] = plot3DGMMParameters(Xi_ref, GMM, labels)
         [V,D]=eig(Sigma(:,:,k));
         scale = 20;
         [x,y,z] = created3DgaussianEllipsoid(Mu(:,k),V,D, scale);
-        surf(x, y, z, 'EdgeColor',colors(k,:), 'FaceColor',colors(k,:), 'FaceAlpha', 0.5);        
+
+        % This makes the ellipsoids beautiful  
+        surf(x, y, z,'FaceColor',colors(k,:),'FaceAlpha', 0.25, 'FaceLighting','phong','EdgeColor','none');        
+        camlight
     end            
+
     grid on;
     xlabel('$\xi_1$', 'Interpreter', 'LaTex', 'FontSize',15);
     ylabel('$\xi_2$', 'Interpreter', 'LaTex','FontSize',15);
