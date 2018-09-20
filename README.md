@@ -90,12 +90,6 @@ Comment here...
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-crpgmm.png" width="220">
 </>  
 
--  **GMM fit on 3D Via-Point Dataset**  
-TODO...
-
--  **GMM fit on 3D Bumpy Snake Dataset**  
-TODO...
-
 ### Estimation Statistics
 By setting ```est_options.do_plots= 1;``` the function will plot the corresponding estimation statistics for each algorithm. 
 - For the PC-GMM we show the values of the posterior distribution p(C|...) and the estimated clusters at each iteration:  
