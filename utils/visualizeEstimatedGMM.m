@@ -17,7 +17,7 @@ if M == 2
     ml_plot_gmm_pdf(Xi_ref, Priors, Mu, Sigma, limits);
     switch est_options.type
         case 0
-            title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
+            title('Physically-Consistent Gaussian Mixture Model','Interpreter','LaTex', 'FontSize',15);
         case 1
             title('Best fit GMM with EM-based BIC Model Selection','Interpreter','LaTex', 'FontSize',15);
         case 2
@@ -30,7 +30,7 @@ elseif M == 3
     [h_gmm] = plot3DGMMParameters(Xi_ref, GMM, est_labels);
     switch est_options.type
         case 0
-            title('Physically-Consistent Non-Parametric Mixture Model','Interpreter','LaTex', 'FontSize',15);
+            title('Physically-Consistent Gaussian Mixture Model','Interpreter','LaTex', 'FontSize',15);
         case 1
             title('Best fit GMM with EM-based BIC Model Selection','Interpreter','LaTex', 'FontSize',15);
         case 2

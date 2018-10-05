@@ -162,7 +162,7 @@ switch est_type
                     Sigma_k(:,:,k) = V_k*L_k*V_k';
                 end
             end
-            rel_dilation_fact = 0.25;
+            rel_dilation_fact = 0.15;
             Sigma_k = adjust_Covariances(Priors, Sigma_k, 1, rel_dilation_fact);
             Mu    = Mu_k;
             Sigma = Sigma_k;
