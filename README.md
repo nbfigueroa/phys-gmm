@@ -6,6 +6,9 @@ This package contains the inference implementation (Gibbs Sampler) for the "Phys
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Ashape_pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Sshape_pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Ashape_pcgmm.png" width="220">
 </>
 
+### Dependencies
+- [LightSpeed Matlab Toolbox](https://github.com/tminka/lightspeed): Tom Minka's library which includes highly optimized versions of mathematical functions. Please download/install it in the ```thirdparty/``` directory.
+- [crp](http://www.gatsby.ucl.ac.uk/~fwood/code.html): Frank Wood's Infinite Gaussian Mixture Model (IGMM) / Dirichlet process (DP) mixture model Matlab implementation. If you want to use/test ``option 2`` of the given GMM fitting function you must download/install it in the ```thirdparty/``` directory. If you are not interested in this, it is not necessary.
 
 ### Instructions and Content
 This package offers the physically-consistent GMM fitting approach, as well as examples and code for fitting GMM with standard EM approach and the Bayesian non-parametric approach following the Chinese Restaurant Process construction through the ```[Mu, Priors, Sigma] = fit_gmm()``` function by filling its options as follows:
@@ -90,12 +93,6 @@ Comment here...
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-emgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/messy-snake-crpgmm.png" width="220">
 </>  
 
--  **GMM fit on 3D Via-Point Dataset**  
-TODO...
-
--  **GMM fit on 3D Bumpy Snake Dataset**  
-TODO...
-
 ### Estimation Statistics
 By setting ```est_options.do_plots= 1;``` the function will plot the corresponding estimation statistics for each algorithm. 
 - For the PC-GMM we show the values of the posterior distribution p(C|...) and the estimated clusters at each iteration:  
@@ -123,3 +120,6 @@ Such physically-consistent clustering is particularly useful for learning Dynami
 > [1] Figueroa, N. and Billard, A. (2018) "A Physically-Consistent Bayesian Non-Parametric Mixture Model for Dynamical System Learning". In Proceedings of the 2nd Conference on Robot Learning (CoRL). Accepted.  
 
 **Contact**: [Nadia Figueroa](http://lasa.epfl.ch/people/member.php?SCIPER=238387) (nadia.figueroafernandez AT epfl dot ch)
+
+**Acknowledgments**
+This work was supported by the EU project [Cogimon](https://cogimon.eu/cognitive-interaction-motion-cogimon) H2020-ICT-23-2014.
