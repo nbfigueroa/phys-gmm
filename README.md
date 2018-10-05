@@ -6,6 +6,9 @@ This package contains the inference implementation (Gibbs Sampler) for the "Phys
 <img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Ashape_pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Sshape_pcgmm.png" width="220"><img src="https://github.com/nbfigueroa/phys-gmm/blob/master/figs/Ashape_pcgmm.png" width="220">
 </>
 
+### Dependencies
+This code relies on the lightspeed
+
 
 ### Instructions and Content
 This package offers the physically-consistent GMM fitting approach, as well as examples and code for fitting GMM with standard EM approach and the Bayesian non-parametric approach following the Chinese Restaurant Process construction through the ```[Mu, Priors, Sigma] = fit_gmm()``` function by filling its options as follows:
