@@ -7,8 +7,8 @@ This package contains the inference implementation (Gibbs Sampler) for the "Phys
 </>
 
 ### Dependencies
-- [LightSpeed Matlab Toolbox](https://github.com/tminka/lightspeed): Tom Minka's library which includes highly optimized versions of mathematical functions. Please download/install it in the ```thirdparty/``` directory.
-- [crp](http://www.gatsby.ucl.ac.uk/~fwood/code.html): Frank Wood's Infinite Gaussian Mixture Model (IGMM) / Dirichlet process (DP) mixture model Matlab implementation. If you want to use/test ``option 2`` of the given GMM fitting function you must download/install it in the ```thirdparty/``` directory. If you are not interested in this, it is not necessary.
+- [LightSpeed Matlab Toolbox](https://github.com/tminka/lightspeed): Tom Minka's library which includes highly optimized versions of mathematical functions. Please download/install it in the ```thirdparty/lightspeed``` directory.
+- [crp](http://www.gatsby.ucl.ac.uk/~fwood/code.html): Frank Wood's Infinite Gaussian Mixture Model (IGMM) / Dirichlet process (DP) mixture model Matlab implementation. If you want to use/test ``option 2`` of the given GMM fitting function you must download/install it in the ```thirdparty/crp``` directory. If you are not interested in this, it is not necessary.
 
 ### Instructions and Content
 This package offers the physically-consistent GMM fitting approach, as well as examples and code for fitting GMM with standard EM approach and the Bayesian non-parametric approach following the Chinese Restaurant Process construction through the ```[Mu, Priors, Sigma] = fit_gmm()``` function by filling its options as follows:
