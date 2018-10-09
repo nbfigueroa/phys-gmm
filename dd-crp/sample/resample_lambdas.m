@@ -1,4 +1,5 @@
 function [new_lambdas] = update_lambdas(Y, Z_C, lambda, type)
+
     K = max(Z_C);
     Z = bsxfun(@eq,Z_C,1:K);
     

@@ -11,11 +11,28 @@ function [C, Z_C, table_members, table_logLiks] = sample_ddCRPMM(Y, S_alpha, Psi
 %   o table_members:  Cluster Members
 %   o table_logLiks:
 %
-% Author: Nadia Figueroa, PhD Student., Robotics
-% Learning Algorithms and Systems Lab, EPFL (Switzerland)
-% Email address: nadia.figueroafernandez@epfl.ch
-% Website: http://lasa.epfl.ch
-% February 2016; Last revision: 6-Jan-2017
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copyright (C) 2018 Learning Algorithms and Systems Laboratory,          %
+% EPFL, Switzerland                                                       %
+% Author:  Nadia Figueroa                                                 % 
+% email:   nadia.figueroafernandez@epfl.ch                                %
+% website: http://lasa.epfl.ch                                            %
+%                                                                         %
+% This work was supported by the EU project Cogimon H2020-ICT-23-2014.    %
+%                                                                         %
+% Permission is granted to copy, distribute, and/or modify this program   %
+% under the terms of the GNU General Public License, version 2 or any     %
+% later version published by the Free Software Foundation.                %
+%                                                                         %
+% This program is distributed in the hope that it will be useful, but     %
+% WITHOUT ANY WARRANTY; without even the implied warranty of              %
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General%
+% Public License for more details                                         %
+%                                                                         %
+% If you use this code in your research please cite:                      %
+% "A Physically-Consistent Bayesian Non-Parametric Mixture Model for      %
+%   Dynamical System Learning."; N. Figueroa and A. Billard; CoRL 2018    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %  Data Dimensionality

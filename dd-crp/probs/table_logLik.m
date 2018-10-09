@@ -34,6 +34,7 @@ switch type
         
     case 'full'        
         % Predicted log likelihood of NIW distribution Eq. 250-254
+        % (page 20 . Conjugate Bayesian analysis of the Gaussian distribution 'Murphy')
         % p(\mu, \Sigma) = NIW(\mu,\Sigma | \mu_N, \kappa_n, \nu_n, \Lambda_n )
 
         nu_0     = lambda.nu_0;
