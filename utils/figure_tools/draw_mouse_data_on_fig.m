@@ -1,4 +1,4 @@
-function [data ] = draw_mouse_data_on_DS(fig, limits, varargin)
+function [data ] = draw_mouse_data_on_fig(fig, limits, varargin)
 % GENERATE_MOUSE_DATA(NTH_ORDER, N_DOWNSAMPLE) request the user to give
 % demonstrations of a trajectories in a 2D workspace using the mouse cursor
 % The data is stored in an [x ; dx/dt] structure  

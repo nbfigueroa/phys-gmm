@@ -34,7 +34,7 @@ set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.25, 0.55, 0.2646 0.4358]);
 grid on
 
 % Draw Reference Trajectories
-data = draw_mouse_data_on_DS(fig1, limits);
+data = draw_mouse_data_on_fig(fig1, limits);
 Data = [];
 for l=1:length(data)    
     % Gather Data
