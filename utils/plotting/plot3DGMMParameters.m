@@ -15,7 +15,7 @@ function [hf] = plot3DGMMParameters(Xi_ref, GMM, labels)
     for k=1:K        
         scatter3(Xi_ref(1,labels==k), Xi_ref(2,labels==k), Xi_ref(3,labels==k), 10, 'MarkerEdgeColor','k','MarkerFaceColor',colors(k,:)); hold on;        
         [V,D]=eig(Sigma(:,:,k));
-        scale = 20;
+        scale = 5;
         [x,y,z] = created3DgaussianEllipsoid(Mu(:,k),V,D, scale);
 
         % This makes the ellipsoids beautiful  

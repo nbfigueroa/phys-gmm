@@ -24,14 +24,17 @@ function [Priors, Mu, Sigma] = fit_gmm(Xi_ref, Xi_dot_ref, est_options)
 
 % Parse Options
 est_type         = est_options.type;
-max_gaussians    = est_options.maxK;
+
 do_plots         = est_options.do_plots;
 [M,N]            = size(Xi_ref);
 
-if isempty(est_options.fixed_K)
-    fixed_K        = 0;
-else
-    fixed_K = est_options.fixed_K;
+if est_type == 1
+    max_gaussians    = est_options.maxK;
+    if isempty(est_options.fixed_K)
+        fixed_K        = 0;
+    else
+        fixed_K = est_options.fixed_K;
+    end
 end
 
 if ~isempty(est_options.sub_sample)
@@ -72,7 +75,7 @@ switch est_type
             end
             sigma = sqrt(mode_hist_D/l_sensitivity);
             l = 1/(2*sigma^2);
-            close all;
+            close;
         else
             l = est_options.length_scale;
         end

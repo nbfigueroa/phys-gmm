@@ -19,7 +19,8 @@ function prob = ml_gaussPDF(Data, Mu, Sigma)
 
 %      (D x N) - repmat((D x 1),1,N)
 %      (D x N) - (D x N)
-Data = (Data - repmat(Mu,1,nbData))';
+Mus  = repmat(Mu,1,nbData);
+Data = (Data - Mus)';
 
 % Data = (N x D)
 

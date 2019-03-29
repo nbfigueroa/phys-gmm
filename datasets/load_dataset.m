@@ -52,6 +52,7 @@ else
     data = data_.data;
     N = length(data);    
     Data = [];
+    traj_ids = randsample(N,nb_trajectories);
     for l=1:length(traj_ids)
         % Gather Data
         data_ = data{traj_ids(l)};

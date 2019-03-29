@@ -1,7 +1,7 @@
 function [bic_scores, k] = fit_gmm_bic(X,max_gaussians, repetitions, em_type, do_plot)
 % Fit GMM with BIC Curve
 fprintf('K = ');
-dimz = size(X,1); 
+dimz = size(X,1) 
 bic_scores = [];
 repetitions = 10;
 for j = 1:max_gaussians
