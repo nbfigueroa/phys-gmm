@@ -22,7 +22,7 @@ if compile_thirdparty
     
     % NOT WORKING FOR WINDOWS PC (MEX with a compiler needs to be configured = install compiler)
     % Install lightspeed for Chapter 3 and 5 (PC-GMM Fitting)
-    lightspeed_path = strcat(repo_path, './thirdparty/lightspeed');
+    lightspeed_path = strcat(repo_path, '/thirdparty/lightspeed');
     cd(lightspeed_path)
     pause(1);
 
